@@ -1,0 +1,25 @@
+Pipeline {
+ agent any
+ stages {
+   stage('Setup') {
+     steps {
+       sh 'chmod +x ./scripts/*'
+     }
+   }
+   stage('Clean') {
+     steps {
+       sh './scripts/clean.sh'
+     }
+   }
+   stage('Build') {
+     steps {
+       sh './scripts/compile.sh'
+     }
+   }
+   stage('Test'){
+     steps {
+       sh './scripts/run.sh'
+     }
+   }
+ }
+}
